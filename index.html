@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live with love</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
+
+        /* font */
+        .pretendard {
+            font-family: "Pretendard Variable";
+        }
+
+        body {
+            background-color: #fff;
+            /* #feedf8; 빔프에서 흰색으로 보이는 색 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 90vw;
+            height: 90vh;
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .title {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 10rem;
+            color: #d72a3e;
+            margin: 0;
+        }
+
+        .logo h2 {
+            font-size: 5rem;
+            color: #000;
+            margin: 0;
+        }
+
+        .text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #000;
+            margin: 0;
+            text-align: right;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(310px, 1fr);
+            gap: 20px;
+            margin: 3% 0 0 0;
+            width: 100%;
+        }
+
+        .tile-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .tile {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+
+        .tile:hover {
+            transform: scale(1.02);
+        }
+
+        .tile .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #d72a3e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tile:hover .overlay {
+            opacity: 1;
+        }
+
+        .tile .overlay h3 {
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="gallery-container">
+            <div class="title">
+                <div class="logo">
+                    <h1>愛情<h2>을 가지고 살자</h2>
+                    </h1>
+                </div>
+                <div class="text">
+                    <h2>사람들은 사랑과<br>
+                        애정을 바탕으로<br>
+                        살아갑니다.</h2>
+                </div>
+            </div>
+            <div class="gallery">
+                <a href="prologue.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/1.jpg);">
+                        <div class="overlay">
+                            <h3>Prologue</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="music.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/2.jpg)">
+                        <div class="overlay">
+                            <h3>Music</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="movie.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/3.jpg);">
+                        <div class="overlay">
+                            <h3>Movie</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="place.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/4.jpg);">
+                        <div class="overlay">
+                            <h3>Place</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="food.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/5.jpg);">
+                        <div class="overlay">
+                            <h3>Food</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="hobby.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/6.jpg);">
+                        <div class="overlay">
+                            <h3>Hobby</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="people.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/7.jpg);">
+                        <div class="overlay">
+                            <h3>People</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="moment.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/8.jpg);">
+                        <div class="overlay">
+                            <h3>Moment</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="epilogue.html" class="tile-link">
+                    <div class="tile" style="background-image: url(img/9.jpg);">
+                        <div class="overlay">
+                            <h3>Epilogue</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

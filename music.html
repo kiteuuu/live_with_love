@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fff;
+        }
+
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        /* font */
+        .pretendard {
+            font-family: "Pretendard Variable";
+        }
+
+        h1 {
+            color: #000;
+            font-size: 3rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #d72a3e;
+            color: #fff;
+        }
+
+        #recommendations {
+            margin-top: 20px;
+            text-align: center;
+            height: 50%;
+        }
+
+        .song {
+            margin: 20px 0;
+            font-size: 7rem;
+            color: #000;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .song:hover {
+            color: #d72a3e;
+        }
+
+        .logo {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 10rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #d72a3e;
+            transition: color 0.3s;
+        }
+
+        .logo a:hover {
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <a href="index.html">愛情</a>
+    </div>
+    <h1>내가 좋아하는 음악 추천</h1>
+    <button onclick="recommendMusic()">음악 추천 받기</button>
+    <div id="recommendations"></div>
+
+    <script>
+        const songs = [
+            { title: "MINSU - No worries, I'm good'", url: "https://www.youtube.com/watch?v=tIjcO3VB7MU" },
+            { title: "LEE GO DO - Mouse", url: "https://www.youtube.com/watch?v=fLWuMf3ggHc" },
+            { title: "LYNYRD SKYNYRD - Free Bird", url: "https://www.youtube.com/watch?v=0LwcvjNJTuM" },
+            { title: "MINSU - Dickies, White Tee, Nike", url: "https://www.youtube.com/watch?v=2IUTe_7wp9I&list=OLAK5uy_lCRUKnqGGx372sK4ftz9GD9jCA90FpM2g" },
+            { title: "MASEGO + FKJ - Psycho", url: "https://www.youtube.com/watch?v=zwf5MpcuKDM" },
+            { title: "DAMONS YEAR - SALTY", url: "https://www.youtube.com/watch?v=pSudEWBAYRE" },
+            { title: "MINSU - I Like Me", url: "https://www.youtube.com/watch?v=Lod5NQzw6P0&list=OLAK5uy_nW_ltez6QewVtdCik9QRc60KEuKv-Oq98" },
+            { title: "SILICA GEL - NO PAIN", url: "https://www.youtube.com/watch?v=JaIMSzE5yLA" },
+            { title: "ALEPH - CHIT-CHAT", url: "https://www.youtube.com/watch?v=qKXLwA9szUw" },
+            { title: "MINSU - Chum", url: "https://www.youtube.com/watch?v=Kjnhj1j_xqk&list=OLAK5uy_lQtY4LiJjZEVsFgdWXPSFCSrWg5zoN0OM" }
+        ];
+
+        function recommendMusic() {
+            const recommendationsDiv = document.getElementById('recommendations');
+            recommendationsDiv.innerHTML = '';
+
+            const shuffledSongs = songs.sort(() => 0.5 - Math.random());
+            const selectedSongs = shuffledSongs.slice(0, 5);
+
+            selectedSongs.forEach(song => {
+                const songElement = document.createElement('div');
+                songElement.className = 'song';
+                songElement.textContent = song.title;
+                songElement.onclick = () => {
+                    window.open(song.url, '_blank', 'width=600,height=400');
+                };
+                recommendationsDiv.appendChild(songElement);
+            });
+        }
+    </script>
+</body>
+
+</html>

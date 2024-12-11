@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epilogue</title>
+    <style>
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        /* font */
+        .pretendard {
+            font-family: "Pretendard Variable";
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .icon {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
+            background-color: #d72a3e;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1500px;
+            background: #fff;
+            padding: 50px 20px 50px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            text-align: center;
+            font-size: 3rem;
+            display: none;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup button {
+            margin-top: 20px;
+            padding: 20px 30px;
+            background: #d72a3e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 2rem;
+        }
+
+        .popup button:hover {
+            background: #a00719;
+        }
+
+        .logo {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 10rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #d72a3e;
+            transition: color 0.3s;
+        }
+
+        .logo a:hover {
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <a href="index.html">愛情</a>
+    </div>
+    <div class="icon" style="top: 30%; left: 30%;" data-message="다양한 장소를 여행하며 보고 느끼고 배우고 추억도 쌓아보자">여행</div>
+    <div class="icon" style="top: 40%; left: 60%;" data-message="새로운 도전과 배움을 통해 나만의 경험을 쌓아보자">경험</div>
+    <div class="icon" style="top: 70%; left: 30%;" data-message="뭐든지 애정을 가지고 살아가자">애정</div>
+    <div class="icon" style="top: 20%; left: 80%;" data-message="누구의 기준에도 얽매이지 않고 나만의 방식으로 살아가자">자유</div>
+    <div class="icon" style="top: 50%; left: 10%;" data-message="매일 조금씩 더 나아지고, 성장하는 나를 만들어가자">성장</div>
+    <div class="icon" style="top: 70%; left: 80%;" data-message="다양한 사람들과의 만남을 통해 더 넒은 세상을 배워보자">만남</div>
+
+    <div class="popup" id="popup">
+        <p id="popup-message"></p>
+        <button id="close-popup">닫기</button>
+    </div>
+
+    <script>
+        const icons = document.querySelectorAll('.icon');
+        const popup = document.getElementById('popup');
+        const popupMessage = document.getElementById('popup-message');
+        const closePopup = document.getElementById('close-popup');
+
+        icons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const message = icon.dataset.message;
+                popupMessage.textContent = message;
+                popup.classList.add('active');
+            });
+        });
+
+        closePopup.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+    </script>
+</body>
+
+</html>

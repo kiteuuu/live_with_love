@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        /* font */
+        .pretendard {
+            font-family: "Pretendard Variable";
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(570px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 2400px;
+            margin: 300px auto 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+
+        .modal span {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .logo-left {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 10rem;
+            font-weight: bold;
+        }
+
+        .logo-left a {
+            text-decoration: none;
+            color: #d72a3e;
+            transition: color 0.3s;
+        }
+
+        .logo-left a:hover {
+            color: #000000;
+        }
+
+        .text {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            font-size: 10rem;
+            font-weight: bold;
+        }
+
+        .text a {
+            text-decoration: none;
+            color: #000;
+            transition: color 0.3s;
+        }
+
+        .text a:hover {
+            color: #d72a3e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo-left">
+        <a href="index.html">愛情</a>
+    </div>
+    <div class="text">
+        <a href="https://royal.khs.go.kr/ROYAL/contents/menuInfo-gbg.do?grpCode=rtm">화성 융릉과 건릉</a>
+    </div>
+    <div class="gallery">
+        <img src="img/21.jpg" alt="융건릉 사진 1">
+        <img src="img/12.jpg" alt="융건릉 사진 2">
+        <img src="img/16.JPG" alt="융건릉 사진 3">
+        <img src="img/22.JPG" alt="융건릉 사진 4">
+        <img src="img/14.JPG" alt="융건릉 사진 5">
+        <img src="img/13.JPG" alt="융건릉 사진 6">
+        <img src="img/17.JPG" alt="융건릉 사진 7">
+        <img src="img/18.JPG" alt="융건릉 사진 8">
+        <img src="img/19.JPG" alt="융건릉 사진 9">
+        <img src="img/15.JPG" alt="융건릉 사진 10">
+        <img src="img/11.JPG" alt="융건릉 사진 9">
+        <img src="img/20.JPG" alt="융건릉 사진 10">
+    </div>
+    <div class="modal" id="modal">
+        <span id="close">&times;</span>
+        <img id="modalImg" src="" alt="확대된 이미지">
+    </div>
+    <script>
+        const galleryImages = document.querySelectorAll('.gallery img');
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modalImg');
+        const closeModal = document.getElementById('close');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImg) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

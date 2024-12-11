@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prologue</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        /* font */
+        .pretendard {
+            font-family: "Pretendard Variable";
+        }
+
+        body {
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .timeline-container {
+            position: relative;
+            width: 80%;
+            top: 10%;
+        }
+
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: black;
+        }
+
+        ul {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            width: 100%;
+        }
+
+        li {
+            position: relative;
+            font-weight: bold;
+            font-size: 5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        li:hover {
+            color: #d72a3e;
+        }
+
+
+        li:nth-child(odd) {
+            transform: translateY(-100px);
+        }
+
+        li:nth-child(even) {
+            transform: translateY(100px);
+        }
+
+        .popup {
+            position: absolute;
+            display: none;
+            background: black;
+            color: white;
+            border-radius: 10px;
+            font-weight: normal;
+            font-size: 2.5rem;
+            padding: 20px;
+            text-align: center;
+            width: 270px;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .popup.top {
+            bottom: calc(100% + 40px);
+        }
+
+        .popup.bottom {
+            top: calc(100% + 40px);
+        }
+
+        .logo {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 10rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #d72a3e;
+            transition: color 0.3s;
+        }
+
+        .logo a:hover {
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <a href="index.html">愛情</a>
+    </div>
+    <div class="timeline-container">
+        <div class="line"></div>
+        <ul>
+            <li data-content="연우의 탄생">2004</li>
+            <li data-content="초등학교 입학!">2011</li>
+            <li data-content="초등학교 졸업, 중학교 입학!">2017</li>
+            <li data-content="중학교 졸업, 고등학교 입학!">2020</li>
+            <li data-content="고등학교 졸업, 대학교 입학!">2023</li>
+            <li data-content="대학교 졸업">2025</li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const times = document.querySelectorAll("li");
+
+            times.forEach((time, index) => {
+
+                const popup = document.createElement("div");
+                popup.classList.add("popup");
+                popup.textContent = time.dataset.content;
+                time.appendChild(popup);
+
+
+                time.addEventListener("click", (e) => {
+
+                    e.stopPropagation();
+
+
+                    document.querySelectorAll(".popup").forEach(p => {
+                        p.style.display = "none";
+                    });
+
+                    if (index % 2 === 0) {
+                        popup.classList.add("top");
+                        popup.classList.remove("bottom");
+                    } else {
+                        popup.classList.add("bottom");
+                        popup.classList.remove("top");
+                    }
+
+                    popup.style.display = "block";
+                });
+            });
+
+            document.addEventListener("click", () => {
+                document.querySelectorAll(".popup").forEach(p => {
+                    p.style.display = "none";
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

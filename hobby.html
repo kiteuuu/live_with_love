@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobby</title>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        /* font */
+        .pretendard {
+            font-family: "Pretendard Variable";
+        }
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    p {
+      font-size: 3rem;
+      color: #000;
+    }
+
+    .guitar {
+      position: relative;
+      width: 90vw;
+      height: 50vh;
+      background: #252525;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 180px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .string {
+      width: 90%;
+      height: 15px;
+      background: #ccc;
+      border-radius: 2px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .string:hover {
+      background: #d72a3e;
+    }
+
+    .string:active {
+      transform: translateY(4px);
+    }
+
+    .logo {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      font-size: 10rem;
+      font-weight: bold;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: #d72a3e;
+      transition: color 0.3s;
+    }
+
+    .logo a:hover {
+      color: #000000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo">
+    <a href="index.html">愛情</a>
+  </div>
+  <div class="guitar">
+    <div class="string" data-sound="e"></div>
+    <div class="string" data-sound="a"></div>
+    <div class="string" data-sound="d"></div>
+    <div class="string" data-sound="g"></div>
+    <div class="string" data-sound="b"></div>
+    <div class="string" data-sound="e-high"></div>
+  </div>
+  <p> 소리를 키우고 기타 줄을 클릭해보세요! </p>
+
+
+  <script>
+
+    let audioContext;
+
+    function initializeAudioContext() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        console.log('AudioContext initialized');
+      }
+    }
+
+    const frequencies = {
+      e: 82.41,
+      a: 110.00,
+      d: 146.83,
+      g: 196.00,
+      b: 246.94,
+      'e-high': 329.63,
+    };
+
+    const strings = document.querySelectorAll('.string');
+
+    strings.forEach(string => {
+      string.addEventListener('click', () => {
+        initializeAudioContext();
+        playSound(string.dataset.sound);
+      });
+
+      string.addEventListener('mousedown', () => string.classList.add('active'));
+      string.addEventListener('mouseup', () => string.classList.remove('active'));
+    });
+
+    function playSound(note) {
+      if (!frequencies[note] || !audioContext) return;
+
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(frequencies[note], audioContext.currentTime); // 주파수 설정
+
+      gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + 0.5);
+    }
+
+  </script>
+</body>
+
+</html>

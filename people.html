@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #fff;
+        }
+
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        /* font */
+        .pretendard {
+            font-family: "Pretendard Variable";
+        }
+
+        .container {
+            width: 90vw;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            justify-content: center;
+            margin-top: 200px;
+        }
+
+        .card {
+            perspective: 1000px;
+            width: 100%;
+            height: 500px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-back {
+            background: white;
+            color: #000;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 10rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #d72a3e;
+            transition: color 0.3s;
+        }
+
+        .logo a:hover {
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <a href="index.html">愛情</a>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="img/38.png" alt="나">
+                </div>
+                <div class="card-back">나야. 김연우.</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="img/31.png" alt="친구 1">
+                </div>
+                <div class="card-back">심민지<br>이웃사촌</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="img/33.png" alt="친구 2">
+                </div>
+                <div class="card-back">이다움<br>빵울이 엄마</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="img/32.png" alt="친구 3">
+                </div>
+                <div class="card-back">주재훈<br>같이 놀면 웃긴애</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="img/34.png" alt="친구 4">
+                </div>
+                <div class="card-back">이성윤<br>노래취향 잘맞는 오빠</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="img/35.png" alt="친구 5">
+                </div>
+                <div class="card-back">김정우<br>디미디 남매캐미</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="img/36.png" alt="친구 6">
+                </div>
+                <div class="card-back">이민서<br>쪼꼬매서 귀여움</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="img/37.png" alt="친구 7">
+                </div>
+                <div class="card-back">조윤솔<br>내 친구들중 가장 맛잘알</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

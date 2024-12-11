@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
+        /* font */
+        .pretendard {
+            font-family: "Pretendard Variable";
+        }
+
+        .gallery {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #fff;
+        }
+
+        .photos {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            width: 90vw;
+        }
+
+        .photo {
+            width: 500px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .photo:hover {
+            transform: translateY(-30px);
+        }
+
+        .episode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            display: none;
+        }
+
+        #closeBtn {
+            margin-top: 20px;
+            padding: 20px;
+            font-size: 2rem;
+            background: #d72a3e;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #closeBtn:hover {
+            background: #a00719;
+        }
+
+        .logo {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            font-size: 10rem;
+            font-weight: bold;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #d72a3e;
+            transition: color 0.3s;
+        }
+
+        .logo a:hover {
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo">
+        <a href="index.html">愛情</a>
+    </div>
+    <div class="gallery">
+        <div class="photos">
+            <div class="photo" data-episode="수업 들으러 학교에 갔다가 아르바이트 끝나고 집으로 돌아가는 길.">
+                <img src="img/23.png" alt="Memory 1">
+            </div>
+            <div class="photo" data-episode="대학 동기들과 다같이 술먹으러 갔던 날.">
+                <img src="img/24.png" alt="Memory 2">
+            </div>
+            <div class="photo" data-episode="대학교에 입학하고 처음한 대학 축제.">
+                <img src="img/25.png" alt="Memory 3">
+            </div>
+            <div class="photo" data-episode="머리를 양갈래로 묶은 기념 사진 찍은 날.">
+                <img src="img/26.png" alt="Memory 4">
+            </div>
+            <div class="photo" data-episode="학교에서 수업 듣다가 쉬는 시간에 테라스에서
+      찍은 사진.">
+                <img src="img/28.png" alt="Memory 5">
+            </div>
+            <div class="photo" data-episode="혜린 언니랑 지현 언니와 찍은 사진.">
+                <img src="img/30.png" alt="Memory 6">
+            </div>
+        </div>
+    </div>
+    <div class="episode">
+        <p id="episode-text"></p>
+        <button id="closeBtn">Close</button>
+    </div>
+    <script>
+        const photos = document.querySelectorAll('.photo');
+        const episodeModal = document.querySelector('.episode');
+        const episodeText = document.getElementById('episode-text');
+        const closeEpisode = document.getElementById('closeBtn');
+
+        photos.forEach(photo => {
+            photo.addEventListener('click', () => {
+                const episode = photo.dataset.episode;
+                episodeText.textContent = episode;
+                episodeModal.style.display = 'flex';
+            });
+        });
+
+        closeEpisode.addEventListener('click', () => {
+            episodeModal.style.display = 'none';
+        });
+
+    </script>
+</body>
+
+</html>
